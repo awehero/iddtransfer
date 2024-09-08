@@ -1,4 +1,4 @@
- const substitutionMap = {
+ const substitutionTable = {
             'A': 'P', 'B': '5', 'C': 'x', 'D': '7', 'E': 'o', 'F': 'r',
             'G': '2', 'H': 'l', 'I': 'a', 'J': '9', 'K': 'u', 'L': '3',
             'M': 's', 'N': '8', 'O': 't', 'P': '1', 'Q': 'w', 'R': 'h',
@@ -12,19 +12,16 @@
             '8': 'q', '9': '4'
         };
 
-        // Function to unscramble the text based on the substitution mapping
-        function unscramble(text) {
-            const reverseSubstitutionMap = Object.fromEntries(
-                Object.entries(substitutionMap).map(([key, value]) => [value, key])
-            );
-            return text.split('').map(char => reverseSubstitutionMap[char] || char).join('');
-        }
+        // Create the reverse substitution map
+        const reverseSubstitutionTable = Object.fromEntries(
+            Object.entries(substitutionTable).map(([key, value]) => [value, key])
+        );
 
         // Prompt user for input
         let userInput = prompt('Enter the text to unscramble:');
         
-        // Unscramble the input
-        let unscrambledText = unscramble(userInput);
+        // Unscramble the input directly
+        let unscrambledText = userInput.split('').map(char => reverseSubstitutionTable[char] || char).join('');
         
-        // Display the unscrambled text
-        console.log('Unscrambled text: ' + unscrambledText);
+        // Display the unscrambled text in the console
+        console.log('Unscrambled text:', unscrambledText);
