@@ -11,7 +11,7 @@ function scrambleText(text) {
 }
 
 // Define your input text
-let inputText = n;
+let inputText = JSON.stringify(n);
 // Call the function and log the result
 let scrambled = scrambleText(inputText);
 console.log('Scrambled Text:', scrambled);
