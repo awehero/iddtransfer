@@ -1,19 +1,7 @@
-function waitForDebuggerToExit(callback) {
-    function checkDebugger() {
-        try {
-            new Function('debugger;')();
-            setTimeout(checkDebugger, 100);
-        } catch {
-            callback();
-        }
-    }
-    checkDebugger();
-}
+const inputString = prompt('Enter your JSON string:');
 
-const a = { example: 'data' };
+const transformedString = inputString
+    .replace(/{"mapId":"|,"time":/g, '')
+    .replace(/,"count":/g, ',');
 
-waitForDebuggerToExit(() => 
-    navigator.clipboard.writeText(JSON.stringify(a))
-        .then(() => console.log('Data copied to clipboard.'))
-        .catch(err => console.error('Failed to copy data to clipboard:', err))
-);
+console.log(transformedString);
