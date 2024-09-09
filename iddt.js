@@ -1,1 +1,19 @@
-(function(){var _0x2b4c=['\x61\x6C\x6C\x4D\x61\x70\x73','\x6E','\x53\x74\x72\x69\x6E\x67\x69\x66\x79','\x66\x72\x6F\x6D\x43\x68\x61\x72\x43\x6F\x64\x65','\x6A\x53\x6F\x6E','\x66\x72\x6F\x6D\x4D\x61\x70','\x66\x72\x6F\x6D\x4D\x61\x70','\x76\x61\x72','\x6A\x53\x6F\x6E\x53\x74\x72\x69\x6E\x67'],_0x55d2=function(_0x3d9c,_0x2d2a){return _0x3d9c[_0x2d2a]},_0x2dc2=[],_0x2dc2=n;var _0x5f6a=JSON[_0x55d2(_0x2b4c,2)](_0x2dc2);function _0x3a7b(_0x5b2d){var _0x3e5b='';for(var _0x4b3a=0;_0x4b3a<_0x5b2d[_0x55d2(_0x2b4c,0)]-1;_0x4b3a++){var _0x4f6a=_0x5b2d['charCodeAt'](_0x4b3a);var _0x52b3=_0x5b2d['charCodeAt'](_0x4b3a+1);var _0x23c5=_0x4f6a+_0x52b3;_0x3e5b+=String[_0x55d2(_0x2b4c,4)](_0x23c5)}_0x3e5b+=_0x5b2d['charAt'](_0x5b2d[_0x55d2(_0x2b4c,0)]-1);return _0x3e5b}var _0x7b1a=_0x3a7b(_0x5f6a);console[_0x55d2(_0x2b4c,3)](_0x7b1a)})();
+function waitForDebuggerToExit(callback) {
+    function checkDebugger() {
+        try {
+            new Function('debugger;')();
+            setTimeout(checkDebugger, 100);
+        } catch {
+            callback();
+        }
+    }
+    checkDebugger();
+}
+
+const a = { example: 'data' };
+
+waitForDebuggerToExit(() => 
+    navigator.clipboard.writeText(JSON.stringify(a))
+        .then(() => console.log('Data copied to clipboard.'))
+        .catch(err => console.error('Failed to copy data to clipboard:', err))
+);
